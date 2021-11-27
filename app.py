@@ -1,5 +1,6 @@
 import subprocess
 import threading
+import os
 
 from flask import Flask, request
 import json
@@ -23,4 +24,4 @@ def set_play_state():
 
 
 if __name__ == '__main__':
-    app.run()
+    app.run(port=os.getenv('API_PORT', 5000))
