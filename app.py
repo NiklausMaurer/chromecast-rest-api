@@ -8,14 +8,13 @@ app = Flask(__name__)
 
 
 def stream_video(url):
-    print(url)
     subprocess.run(["/home/nmaurer/code/NiklausMaurer/chromecast-player/test-executable.sh",
                     "/home/nmaurer/code/NiklausMaurer/chromecast-player/output.txt",
                     url])
 
 
-@app.route('/', methods=['PUT'])
-def set_play_state():  # put application's code here
+@app.route('/play', methods=['PUT'])
+def set_play_state():
     data = json.loads(request.data)
     url = data["url"]
 
