@@ -8,9 +8,7 @@ app = Flask(__name__)
 
 
 def stream_video(url):
-    subprocess.run(["/home/nmaurer/code/NiklausMaurer/chromecast-player/test-executable.sh",
-                    "/home/nmaurer/code/NiklausMaurer/chromecast-player/output.txt",
-                    url])
+    subprocess.run(["catt", "cast", url])
 
 
 @app.route('/play', methods=['PUT'])
@@ -18,7 +16,7 @@ def set_play_state():
     data = json.loads(request.data)
     url = data["url"]
 
-    thread = threading.Thread(target=stream_video, args=(url, ))
+    thread = threading.Thread(target=stream_video, args=(url,))
     thread.start()
 
     return data['url']
