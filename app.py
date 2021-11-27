@@ -8,7 +8,7 @@ app = Flask(__name__)
 
 
 def cast(url):
-    subprocess.run(["catt", "-d", "192.168.88.240", "cast", url])
+    subprocess.run(["catt", "cast", url])
 
 
 @app.route('/cast', methods=['PUT'])
