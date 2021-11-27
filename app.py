@@ -8,7 +8,7 @@ import json
 app = Flask(__name__)
 
 
-def stream_video(url):
+def cast(url):
     subprocess.run(["catt", "cast", url])
 
 
@@ -17,7 +17,7 @@ def set_play_state():
     data = json.loads(request.data)
     url = data["url"]
 
-    thread = threading.Thread(target=stream_video, args=(url,))
+    thread = threading.Thread(target=cast, args=(url,))
     thread.start()
 
     return data['url']
