@@ -11,7 +11,7 @@ def cast(url):
     subprocess.run(["catt", "cast", url])
 
 
-@app.route('/play', methods=['PUT'])
+@app.route('/cast', methods=['PUT'])
 def set_play_state():
     data = json.loads(request.data)
     url = data["url"]
