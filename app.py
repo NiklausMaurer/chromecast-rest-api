@@ -1,6 +1,6 @@
-import subprocess
-import threading
-
+import os
+from multiprocessing import Process
+import validators
 from flask import Flask, request
 import json
 
@@ -8,7 +8,8 @@ app = Flask(__name__)
 
 
 def cast(url):
-    subprocess.run(["python", "-m", "catt.cli", "cast", url])
+    if validators.url(url):
+        os.system(f"python -m catt.cli cast {url}")
 
 
 @app.route('/cast', methods=['PUT'])
@@ -16,8 +17,8 @@ def set_play_state():
     data = json.loads(request.data)
     url = data["url"]
 
-    thread = threading.Thread(target=cast, args=(url,))
-    thread.start()
+    process = Process(target=cast, args=(url,))
+    process.start()
 
     return data['url']
 
