@@ -5,7 +5,7 @@ The api was written to support playing a youtube video on chromecast as part of 
 
 ## Usage from within homeassitant
 
-Add the following to your `configuration.yaml` to create an action that you can invoke from any automation or script:
+Add the following to your `configuration.yaml` to create an action that you can invoke from any automation or script in home assistant:
 ``` yaml
 rest_command:
   play_my_favourite_video:
